@@ -25,8 +25,23 @@ The `DuckFine` class (`duckfine.py`) calculates late fees according to four core
 .
 ├── .github/
 │   └── workflows/
-│       └── tests.yml       # GitHub Actions CI workflow (CI Gate)
+│       └── main.yml        # GitHub Actions CI workflow (CI Gate)
 ├── duckfine.py             # Main library class implementation
+├── app.py                  # Flask health and fine-calculation API
 ├── test_duckfine.py        # Comprehensive unittest suite
+├── test_app.py             # Flask API tests
+├── requirements.txt        # Python dependencies
 ├── .gitignore              # Ignores Python bytecode and coverage caches
 └── README.md               # Project documentation
+```
+
+## REST API
+
+Install dependencies with `pip install -r requirements.txt`, then start the
+service with `flask --app app run`.
+
+- `GET /health` returns `{"status": "ok"}`.
+- `GET /fine?days=N&deluxe=1` returns the calculated fee as `{"fee": 0.5}`.
+  The `deluxe` parameter is optional; only `deluxe=1` enables the deluxe rate.
+  Missing, non-integer, or negative `days` values return HTTP 400 with an
+  `error` message.
