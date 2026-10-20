@@ -1,5 +1,6 @@
 # test_duckfine.py
 import unittest
+
 from duckfine import DuckFine
 
 
