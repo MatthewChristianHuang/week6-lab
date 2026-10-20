@@ -1,5 +1,6 @@
 import os
 import unittest
+
 from playwright.sync_api import expect, sync_playwright
 
 BASE_URL = os.environ.get("BASE_URL", "http://localhost:5000/")
